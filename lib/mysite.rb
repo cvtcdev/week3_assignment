@@ -1,31 +1,33 @@
 require 'rack'
-require_relative("lib/HomeApp")
-require_relative("lib/ResumeApp")
-require_relative("lib/AboutApp")
-require_relative("lib/ContactApp")
-require_relative("lib/SubmitApp")
+require_relative("HomeApp")
+require_relative("ResumeApp")
+require_relative("AboutApp")
+require_relative("ContactApp")
+require_relative("SubmitApp")
 
-app = Rack::Builder.new do
-  map "/" do
-    run HomeApp.new
-  end
+class MySite
+  def self.run
+    Rack::Builder.new do
 
-  map "/about_me" do
-    run AboutApp.new
-  end
+      map "/" do
+        run HomeApp.new
+      end
 
-  map "/resume" do
-    run ResumeApp.new
-  end
+      map "/about_me" do
+        run AboutApp.new
+      end
 
-  map "/contact" do
-    run ContactApp.new
-  end
+      map "/resume" do
+        run ResumeApp.new
+      end
 
-  map "/submit_contact" do
-    run SumbitApp.new
+      map "/contact" do
+        run ContactApp.new
+      end
+
+      map "/submit_contact" do
+        run SubmitApp.new
+      end
+    end
   end
 end
-
-server = Rack::Server.new :app => app, :server=> "webrick"
-server.start
