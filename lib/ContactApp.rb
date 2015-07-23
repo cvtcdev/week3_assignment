@@ -12,7 +12,7 @@ class ContactApp
         <label for="email">Email: </label>
         <input id="email" type="text" name="email"><br><br>
         <label for="message">Message: </label>
-        <textarea id="name" name="name" rows="5" cols="25"></textarea><br><br>
+        <textarea id="message" name="message" rows="5" cols="25"></textarea><br><br>
         <input id="submit" type="submit" value="Submit">
       </form>
     }
