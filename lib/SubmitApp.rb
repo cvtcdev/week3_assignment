@@ -1,9 +1,9 @@
 class SubmitApp
   def call(env)
     request = Rack::Request.new(env)
-    name = request.POST["name"]
     email = request.POST["email"]
     message = request.POST["message"]
+    name = request.POST["name"]
 
     content = render_page(email, message, name)
 
@@ -13,12 +13,13 @@ class SubmitApp
   def render_page(email, message, name)
     content = ""
     content << File.open("htm/header.html").read
-    content << "Name: "
+    content << "<h1>Summer of Ruby 2015</h1>"
+    content << "<h2>Name: "
     content << name
     content << "<br>Email: "
     content << email
     content << "<br>Message: <br>"
-    content << message
+    content << message + "</h2>"
     content << File.open("htm/footer.html").read
     content
   end
